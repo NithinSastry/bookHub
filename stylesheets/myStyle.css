@@ -1,0 +1,179 @@
+.navbar-custom {
+    padding: 15px;
+    border: none !important;
+    font-family: Titillium Web;
+}
+
+#totalbooks {
+    font-size: 20px;
+    margin-top: 25px;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 40px;
+    background-color: yellowgreen;
+}
+
+.bookItem {
+    font-size: 20px;
+    border: 2px solid green;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.bookItem:hover {
+    background-color: #87D37C;
+}
+
+.bookItem > a {
+    color: black;
+}
+
+.book-icon {
+    padding-left: 10px;
+    position: relative;
+    top: 50%;
+}
+
+.brand-logo:hover {
+    text-decoration: none !important;
+}
+
+.main {
+    margin-top: -20px;
+    border: 1px solid black;
+    background: url('../images/dust.png');
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+#list {
+    border-right: 2px solid black;
+    height: 600px;
+    overflow-y: scroll;
+}
+
+@media (max-width:767px) {
+    #list {
+        border-right: none;
+    }
+}
+
+#sort_select {
+    position: relative;
+}
+
+#items {
+    margin-bottom: 15px;
+    font-family: Titillium Web;
+}
+
+.default {
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    font-family: Titillium Web;
+}
+
+#view {
+    height: 600px;
+}
+
+.rupee {
+    padding-right: 30px;
+}
+
+.book_image {
+    margin-top: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 262px;
+    height: 257px;
+    background-size: cover;
+    background-position: center;
+    /*background-size: contain;*/
+    background-repeat: no-repeat;
+}
+
+.detail_table {
+    margin-top: 20px;
+    height: 257px;
+    background: url('../images/retina_wood.png');
+    font-family: Titillium Web;
+}
+
+.heading {
+    background-color: #81CFE0;
+}
+
+.label {
+    color: #59ABE3;
+    float: left;
+    font-size: 15px;
+    margin-left: 6px;
+    font-family: Titillium Web;
+}
+
+.label:hover {
+    text-decoration: underline;
+}
+
+.desc {
+    width: auto;
+    height: auto;
+    background-image: url('../images/linedpaper.png');
+    background-size: 48%;
+    background-position: 50% 3%;
+    overflow-y: scroll;
+    font-family: Titillium Web;
+    color: darkslateblue;
+    padding: 5px;
+    border: solid 1px #bbb;
+}
+
+.actions {
+    margin-top: 100px;
+}
+
+.action_button {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.action_icon {
+    margin-right: 15px;
+}
+
+.bookhub {
+    color: green !important;
+    font-size: 50px;
+    display: inline;
+}
+
+@media (max-width : 767px) {
+    .bookhub {
+        font-size: 30px;
+    }
+
+    .logo {
+        display: inline !important;
+    }
+}
+
+.mobile_image {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+.author_label {
+    font-size: 10px;
+    text-align: left;
+}
+
+.mobile_author {
+    font-size: 15px;
+    text-align: left;
+}

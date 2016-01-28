@@ -1,0 +1,223 @@
+<html>
+
+<head>
+    <title>BookHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+
+    <link rel="stylesheet" href="./stylesheets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./font-awesome-4.5.0/css/font-awesome.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./stylesheets/pace.css" />
+    <link rel="stylesheet" href="./stylesheets/myStyle.css" />
+
+    <script src="./js/lib/jquery-2.1.4.min.js"></script>
+    <script src="./stylesheets/js/bootstrap.min.js"></script>
+    <script src="./js/lib/underscore-min.js"></script>
+    <script src="./js/lib/backbone-min.js"></script>
+
+    <div id="mainApp">
+
+    </div>
+
+    <script id="mainHome" type="text/template">
+        <nav class="navbar navbar-default navbar-static-top navbar-custom">
+            <div class="container">
+                <div class="navbar-header">
+                    <!--<button id="hamburger" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#fixed-navigation-bar"
+                    aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>-->
+
+                    <a class="brand-logo" href="">
+                        <i class="fa fa-leanpub fa-5x hidden-xs"></i>
+                        <i class="fa fa-leanpub fa-3x visible-xs logo"></i>
+                        <p class="bookhub">BookHub</p>
+                        <!--<p style="display:inline;font-size:20px;">- searching books made easy!</p>-->
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-right" id="fixed-navigation-bar">
+                    <p id="totalbooks">Total Books : </p>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid text-center main">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="list">
+                        <div class="panel-group" id="#accordian">
+                            <div id="items">
+                            </div>
+                        </div>
+                        <!--<div id="sort_select">
+                            Sort by :
+                            <input id="rating" type="radio" name="sort" value="rating">Rating
+                            <input id="price" type="radio" name="sort" value="price">Price
+                        </div>-->
+                    </div>
+                </div>
+                <div class="col-md-6 hidden-xs" id="view">
+
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="bookItemView" type="text/template">
+        <a href="/#book/<%= id%>" class="hidden-xs">
+            <div class="row">
+                <div class="col-md-1">
+                    <i class="fa fa-book book-icon"></i>
+                </div>
+                <div class="col-md-9">
+                    <%= name%>
+                </div>
+                <div class="col-md-2">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <%= price%>
+                        </div>
+                        <div class="col-md-8 rupee">
+                            <%= rupee%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <div class="panel panel-default visible-xs">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                     <a data-toggle="collapse" data-parent="#accordion" href="#<%= id%>">
+                            <%= name%> 
+                     </a>
+                 </h4>
+            </div>
+            <div id="<%= id%>" class="panel-collapse collapse">
+                <div class="panel-body">
+                     <div class="mobile_image" style="background-image:url('<%= book.image%>')">
+                     </div>  
+                     <div class="row">
+                         <div class="col-xs-6">
+                             <div class="well">
+                             <p class="author_label">Author</p>
+                             <b><p class="mobile_author"><%= book.author%></p></b>
+                             <p class="author_label">Publisher</p>
+                             <b><p class="mobile_author"><%= book.details.Publisher%></p></b>
+                             </div>
+                         </div>
+                         <div class="col-xs-6">
+                             <div class="well">
+                             <p class="author_label">Rating</p>
+                             <b><p class="mobile_author"><%= book.rating%></p></b>
+                             <p class="author_label">Binding</p>
+                             <b><p class="mobile_author"><%= book.details.Binding%></p></b>    
+                             </div>
+                         </div>
+                     </div>  
+                     <div class="row">
+                         <div class="col-xs-6">
+                             <button class="btn btn-info btn-xs ">
+                                <i class="fa fa-share-square action_icon"></i> Share
+                             </button>
+                         </div>
+                         <div class="col-xs-6">
+                             <button class="btn btn-info btn-xs ">
+                                <i class="fa fa-bookmark action_icon"></i> Bookmark
+                             </button>
+                         </div>
+                     </div>   
+                </div>
+            </div>
+        </div>
+
+    </script>
+
+    <script id="bookDetailView" type="text/template">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="book_image" style="background-image:url('<%= image%>');">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <table class="table detail_table">
+                    <tr class="text-center">
+                        <th colspan="2" class="text-center heading">Details</th>
+                    </tr>
+                    <tr class="text-center">
+                        <td>Author</td>
+                        <td>
+                            <%= author%>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td class="text-center">Publisher</td>
+                        <td>
+                            <%= Publisher%>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>ISBN</td>
+                        <td>
+                            <%= ISBN%>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>Binding</td>
+                        <td>
+                            <%= Binding%>
+                        </td>
+                    </tr>
+                    <tr class="text-center">
+                        <td>Rating</td>
+                        <td>
+                            <%= rating%>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="label">Description</p>
+            <div class="col-md-12">
+                <div class="desc">
+                    <p>
+                        <%= description%>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row actions">
+            <div class="col-md-6">
+                <button class="btn btn-info btn-lg action_button">
+                    <i class="fa fa-share-square action_icon"></i> Share
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-info btn-lg action_button">
+                    <i class="fa fa-bookmark action_icon"></i> Bookmark
+                </button>
+            </div>
+        </div>
+    </script>
+
+    <script src="./js/lib/pace.min.js"></script>
+    <script src="./js/Models/bookModel.js"></script>
+    <script src="./js/Collections/booksCollection.js"></script>
+    <script src="./js/Views/homeView.js"></script>
+    <script src="./js/Views/bookItem.js"></script>
+    <script src="./js/Views/booksList.js"></script>
+    <script src="./js/Views/bookDetail.js"></script>
+    <script src="./js/Routes/bookRouter.js"></script>
+    <script src="./js/startApp.js"></script>
+</body>
+
+</html>
